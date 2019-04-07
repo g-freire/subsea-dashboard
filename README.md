@@ -11,4 +11,4 @@
 ###### python app.py
 ###### npm i
 ###### npm start
-![Screenshot](architecture.png)
+![Screenshot](architecture.PNG)
