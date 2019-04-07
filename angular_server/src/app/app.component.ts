@@ -19,10 +19,10 @@ export class AppComponent {
 
   // pie grid options
   animations = false
-  minWidth = 200
+  minWidth = 150
   colorSchemePie = 'ocean'
   designatedTotal = 100.0
-  view: any[] = [900, 400];
+  view: any[] = [750, 250];
   theme = 'dark';
 
 

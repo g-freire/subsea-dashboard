@@ -24,6 +24,7 @@ label:white;
 /* background-color: green; */
 display:flex;
 text-align: center;
-justify-content: center
+justify-content: center;
+margin-bottom: 200px;
 }
     
