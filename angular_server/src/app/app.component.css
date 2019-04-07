@@ -1,5 +1,4 @@
 body{
-
     background-color:rgb(39,41,50); 
 }
 
@@ -9,15 +8,14 @@ body{
     text-align: center;
     justify-content: center;
     label:white;
-    
     }
+    
 #chart1{
 /* background-color: red; */
 display:flex;
 text-align: center;
 justify-content: center;
 label:white;
-
 }
 
 #chart2{
