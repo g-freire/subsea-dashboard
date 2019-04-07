@@ -4,10 +4,15 @@ from flask import Flask, render_template, url_for, copy_current_request_context
 from random import random
 from time import sleep
 from threading import Thread, Event
-import pymongo
+import pymongo  
+from flask_cors import CORS
+
 
 
 app = Flask(__name__)
+CORS(app, supports_credentials=True)
+
+
 app.config['SECRET_KEY'] = 'secret!'
 app.config['DEBUG'] = True
 
@@ -24,7 +29,7 @@ collection = db["pump_001"]
 
 class RandomThread(Thread):
     def __init__(self):
-        self.delay = 1
+        self.delay = 2
         super(RandomThread, self).__init__()
 
     def randomNumberGenerator(self):
@@ -50,7 +55,9 @@ class RandomThread(Thread):
 @app.route('/')
 def index():
     #only by sending this page first will the client be connected to the socketio instance
-    return render_template('index.html')
+    # return render_template('index.html')
+    # test_connect()
+    return 'api'
 
 @socketio.on('connect', namespace='/test')
 def test_connect():

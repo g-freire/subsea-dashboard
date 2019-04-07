@@ -1,0 +1,43 @@
+<router-outlet></router-outlet>
+
+<div id="title" style="text-align:center">
+  <h1>Data from stream:  {{monitor}}</h1>
+</div>  
+
+<div id="chart1">
+  <ngx-charts-pie-grid
+    [view]="view"
+    [scheme]="colorSchemePie"
+    [results]="single"
+    [animations]="animations"
+    [minWidth] ='minWidth'
+    [designatedTotal]='designatedTotal'
+    (select)="onSelect($event)">
+  </ngx-charts-pie-grid>
+</div>
+<br>
+<div id="chart2">
+  <ngx-charts-bar-horizontal
+    [view]="viewHotizontal"
+    [scheme]="colorScheme"
+    [results]="single"
+    [gradient]="gradient"
+    [xAxis]="showXAxis"
+    [yAxis]="showYAxis"
+    [legend]="showLegend"
+    [showXAxisLabel]="showXAxisLabel"
+    [showYAxisLabel]="showYAxisLabel"
+    [xAxisLabel]="xAxisLabel"
+    [yAxisLabel]="yAxisLabel"
+    [showGridLines]="showGridLines"
+    [yAxisTicks]="yAxisTicks"
+    [xScaleMax]='xScaleMax'
+    [xScaleMin]='xScaleMin'
+    (select)="onSelect($event)">
+  </ngx-charts-bar-horizontal>
+</div>
+
+
+
+
+
