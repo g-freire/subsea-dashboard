@@ -1,4 +1,4 @@
-# Start with a basic flask app webpage.
+#!/usr/bin/env python3
 from flask_socketio import SocketIO, emit
 from flask import Flask, render_template, url_for, copy_current_request_context
 from random import random
@@ -7,11 +7,8 @@ from threading import Thread, Event
 import pymongo  
 from flask_cors import CORS
 
-
-
 app = Flask(__name__)
 CORS(app, supports_credentials=True)
-
 
 app.config['SECRET_KEY'] = 'secret!'
 app.config['DEBUG'] = True
@@ -19,7 +16,6 @@ app.config['DEBUG'] = True
 #turn the flask app into a socketio app
 socketio = SocketIO(app)
 
-#random number Generator Thread
 thread = Thread()
 thread_stop_event = Event()
 
@@ -40,12 +36,14 @@ class RandomThread(Thread):
         #infinite loop of magical random numbers
         print("Making random numbers")
         while not thread_stop_event.isSet():
-            # number = round(random()*10, 3)
-            cursor = collection.find().limit(1).sort("_id", -1)
-            for doc in cursor:
-                number = doc
-            print(number['value'])
-            socketio.emit('newnumber', {'number': number['value']}, namespace='/test')
+            number = round(random()*10, 3)
+            # cursor = collection.find().limit(1).sort("_id", -1)
+            # for doc in cursor:
+            #     number = doc
+            # print(number['value'])
+            # socketio.emit('newnumber', {'number': number['value']}, namespace='/test')
+            socketio.emit('newnumber', {'number': number}, namespace='/test')
+            print(number)
             sleep(self.delay)
 
     def run(self):
@@ -77,4 +75,4 @@ def test_disconnect():
 
 
 if __name__ == '__main__':
-    socketio.run(app)
+    socketio.run(app, host='0.0.0.0')
